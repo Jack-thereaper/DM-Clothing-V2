@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DM Clothing | Dark Luxury Streetwear</title>
+  <meta name="description" content="DM Clothing: premium tees, hoodies and caps.">
+  <!-- Inline favicon: prevents the missing favicon.ico request -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23000'/%3E%3Ctext x='32' y='42' font-size='30' font-family='Arial' font-weight='700' text-anchor='middle' fill='%23d4af37'%3EDM%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="#top" class="logo">DM<span>.</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="#shop">Shop</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="cart-btn" id="cartOpen" aria-label="Open cart">
+      Cart <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <p class="eyebrow">DM Clothing</p>
+      <h1>Built dark.<br><em>Worn bold.</em></h1>
+      <p class="hero-sub">Premium tees, hoodies and caps for people who move in silence.</p>
+      <a class="btn btn-gold" href="#shop">Shop the collection</a>
+    </section>
+
+    <section class="shop" id="shop">
+      <div class="section-head">
+        <h2>The Collection</h2>
+        <div class="filters" id="filters" role="group" aria-label="Filter products"></div>
+      </div>
+      <div class="grid" id="productGrid" aria-live="polite"></div>
+    </section>
+
+    <section class="about" id="about">
+      <h2>About DM</h2>
+      <p>DM Clothing blends a dark luxury look with everyday comfort. Every piece is made to feel premium and stand out without shouting.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <p>&copy; <span id="year"></span> DM Clothing. All rights reserved.</p>
+  </footer>
+
+  <!-- Cart drawer -->
+  <div class="overlay" id="overlay" hidden></div>
+  <aside class="drawer" id="drawer" aria-label="Shopping cart" aria-hidden="true">
+    <div class="drawer-head">
+      <h3>Your Cart</h3>
+      <button class="icon-btn" id="cartClose" aria-label="Close cart">&times;</button>
+    </div>
+    <div class="drawer-body" id="cartItems"></div>
+    <div class="drawer-foot">
+      <div class="total-row"><span>Total</span><strong id="cartTotal">₦0</strong></div>
+      <label class="email-field">Email for receipt
+        <input type="email" id="checkoutEmail" placeholder="you@example.com" autocomplete="email">
+      </label>
+      <button class="btn btn-gold btn-block" id="checkoutBtn">Checkout with Paystack</button>
+      <p class="note" id="checkoutNote"></p>
+    </div>
+  </aside>
+
+  <script src="https://js.paystack.co/v1/inline.js" defer></script>
+  <script src="js/products.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
