@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>DM Admin | Catalog Manager</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23000'/%3E%3Ctext x='32' y='42' font-size='30' font-family='Arial' font-weight='700' text-anchor='middle' fill='%23d4af37'%3EDM%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin">
+
+  <header class="site-header">
+    <a href="index.html" class="logo">DM<span>.</span> <small class="tag">Admin</small></a>
+    <div class="head-actions">
+      <a class="btn btn-ghost" href="index.html?preview=1" target="_blank" rel="noopener">Preview store</a>
+      <button class="btn btn-gold" id="exportBtn">Export products.js</button>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <section class="stats" id="stats" aria-label="Catalog summary"></section>
+
+    <div class="notice" id="draftNotice" hidden>
+      <strong>Unpublished changes.</strong>
+      Your edits are saved in this browser only. To put them on the live site, click
+      <em>Export products.js</em>, replace <code>js/products.js</code> in your project, then commit and push.
+      <button class="link-btn" id="discardBtn">Discard changes</button>
+    </div>
+
+    <div class="toolbar">
+      <input type="search" id="search" placeholder="Search products..." aria-label="Search products">
+      <select id="catFilter" aria-label="Filter by category"></select>
+      <button class="btn btn-gold" id="addBtn">+ Add product</button>
+    </div>
+
+    <div class="table-wrap">
+      <table class="products-table">
+        <thead>
+          <tr><th>Product</th><th>Category</th><th>Price</th><th>Sizes</th><th>In stock</th><th>Featured</th><th></th></tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <p class="empty" id="emptyMsg" hidden>No products match.</p>
+    </div>
+  </main>
+
+  <!-- Add / edit modal. Hidden by default via the hidden attribute. -->
+  <div class="modal-backdrop" id="modal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-head">
+        <h2 id="modalTitle">Add product</h2>
+        <button class="icon-btn" id="modalClose" aria-label="Close">&times;</button>
+      </div>
+      <form id="form" novalidate>
+        <label>Name
+          <input type="text" id="fName" required maxlength="60" placeholder="DM Signature Tee">
+        </label>
+        <label>Product ID
+          <input type="text" id="fId" maxlength="60" placeholder="auto-generated from the name">
+          <small>Lowercase letters, numbers and dashes. Locked once a product is saved.</small>
+        </label>
+        <div class="row2">
+          <label>Category
+            <input type="text" id="fCategory" list="catList" required placeholder="T-Shirts">
+            <datalist id="catList"></datalist>
+          </label>
+          <label>Price (₦)
+            <input type="number" id="fPrice" min="1" step="1" required placeholder="25000">
+          </label>
+        </div>
+        <label>Sizes (comma separated)
+          <input type="text" id="fSizes" required placeholder="S, M, L, XL">
+        </label>
+        <label>Image path
+          <input type="text" id="fImage" placeholder="images/dm-signature-tee.jpg">
+          <small>Copy the photo into the <code>images</code> folder first, then type its path. Leave empty for the DM monogram.
+            Or pick a file to fill in its name: <input type="file" id="fFile" accept="image/*"></small>
+        </label>
+        <div class="checks">
+          <label class="check"><input type="checkbox" id="fAvailable" checked> In stock</label>
+          <label class="check"><input type="checkbox" id="fFeatured"> Featured</label>
+        </div>
+        <p class="form-error" id="formError" role="alert"></p>
+        <div class="modal-foot">
+          <button type="button" class="btn btn-ghost" id="cancelBtn">Cancel</button>
+          <button type="submit" class="btn btn-gold">Save product</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Confirm delete -->
+  <div class="modal-backdrop" id="confirmBox" hidden>
+    <div class="modal small" role="alertdialog" aria-modal="true" aria-labelledby="confirmText">
+      <p id="confirmText"></p>
+      <div class="modal-foot">
+        <button class="btn btn-ghost" id="confirmNo">Keep it</button>
+        <button class="btn btn-danger" id="confirmYes">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/products.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

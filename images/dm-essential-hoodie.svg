@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+<defs><radialGradient id="g" cx="50%" cy="40%" r="70%"><stop offset="0" stop-color="#3b82f6" stop-opacity=".22"/><stop offset="1" stop-color="#050507" stop-opacity="0"/></radialGradient></defs>
+<rect width="400" height="500" fill="#0b0c11"/><rect width="400" height="500" fill="url(#g)"/>
+<path d="M130 105 L60 150 L35 330 L85 335 L105 220 L105 415 Q200 432 295 415 L295 220 L315 335 L365 330 L340 150 L270 105 Q200 70 130 105Z" fill="#0f1117" stroke="#23262f" stroke-width="2"/>
+<path d="M150 108 Q200 190 250 108 Q200 55 150 108Z" fill="#050507" stroke="#23262f" stroke-width="3"/>
+<path d="M175 160 L172 215 M225 160 L228 215" stroke="#3b82f6" stroke-width="3"/>
+<path d="M140 340 Q200 320 260 340 L255 395 Q200 410 145 395Z" fill="none" stroke="#23262f" stroke-width="2"/>
+<text x="200" y="290" font-family="Arial" font-weight="800" font-size="52" text-anchor="middle" fill="#3b82f6" letter-spacing="5">DM</text></svg>
